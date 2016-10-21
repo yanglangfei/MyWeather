@@ -56,11 +56,13 @@ public class PicAdapter extends BaseAdapter {
         if(url.endsWith("gif")){
             Glide.with(context).load(url)
                     .asGif()
+                    .override(500,500)
                     .diskCacheStrategy(DiskCacheStrategy.SOURCE)
             .into(jk_pic);
         }else {
             Glide.with(context).load(url)
                     .asBitmap()
+                    .override(500,500)
                     .diskCacheStrategy(DiskCacheStrategy.SOURCE)
                     .into(jk_pic);
         }

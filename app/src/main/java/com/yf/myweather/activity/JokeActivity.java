@@ -2,7 +2,12 @@ package com.yf.myweather.activity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.AbsListView;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 
 import com.yf.myweather.R;
 import com.yf.myweather.adapter.JokeAdapter;
@@ -22,25 +27,30 @@ import java.util.List;
  * Created by Administrator on 2016/10/20.
  */
 
-public class JokeActivity extends BaseActivity {
+public class JokeActivity extends BaseActivity implements View.OnClickListener {
     private ListView lv_joke;
     private JokeAdapter mAdapter;
     private List<Joke> mJokes=new ArrayList<>();
+    private ImageView iv_finish;
     private  String getJoke="http://japi.juhe.cn/joke/content/text.from";
+    private ImageView sharIv;
+    private View footer;
+    private ProgressBar pb;
+    private  int page=1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ui_joke);
         initView();
-        initJokeData();
+        initJokeData(1);
 
     }
 
-    private void initJokeData() {
+    private void initJokeData(int page) {
         RequestParams param=new RequestParams(getJoke);
         param.addParameter("key","c4da5201e43eebf18ca5630e1390f525");
-        param.addParameter("page",1);
+        param.addParameter("page",page);
         param.addParameter("pagesize",20);
         x.http().get(param, new Callback.CacheCallback<String>() {
             @Override
@@ -51,6 +61,7 @@ public class JokeActivity extends BaseActivity {
             @Override
             public void onSuccess(String result) {
                 if(result!=null){
+                    pb.setVisibility(View.GONE);
                     try {
                         JSONObject object=new JSONObject(result);
                         int error_code=object.optInt("error_code");
@@ -96,8 +107,42 @@ public class JokeActivity extends BaseActivity {
     }
 
     private void initView() {
+        pb= (ProgressBar) findViewById(R.id.pb);
+        pb.setVisibility(View.VISIBLE);
+        footer= LayoutInflater.from(this).inflate(R.layout.ui_footer,null);
+        sharIv= (ImageView) findViewById(R.id.share_iv);
+        sharIv.setVisibility(View.GONE);
         lv_joke= (ListView) findViewById(R.id.lv_joke);
+        lv_joke.addFooterView(footer);
         mAdapter=new JokeAdapter(mJokes,this);
+        iv_finish= (ImageView) findViewById(R.id.iv_finish);
+        iv_finish.setOnClickListener(this);
         lv_joke.setAdapter(mAdapter);
+        lv_joke.removeFooterView(footer);
+        lv_joke.setOnScrollListener(new AbsListView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(AbsListView view, int i) {
+                switch (i){
+                    case SCROLL_STATE_IDLE:
+                        if (view.getLastVisiblePosition() == view.getCount() - 1) {
+                            int p=++page;
+                            initJokeData(p);
+                        }
+                        break;
+                    case  SCROLL_STATE_FLING:
+                        break;
+                }
+            }
+
+            @Override
+            public void onScroll(AbsListView view, int i, int i1, int i2) {
+
+            }
+        });
+    }
+
+    @Override
+    public void onClick(View view) {
+        this.finish();
     }
 }

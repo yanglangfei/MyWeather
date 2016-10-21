@@ -1,13 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
-    <include layout="@layout/ui_titlebar"></include>
+    <include layout="@layout/ui_titlebar" android:id="@+id/tb"></include>
+
+
     <ListView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/tb"
         android:layout_margin="10dp"
         android:id="@+id/lv_joke"></ListView>
 
-</LinearLayout>
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/pb"
+        style="@android:style/Widget.Holo.ProgressBar"
+        android:layout_centerInParent="true"/>
+
+
+</RelativeLayout>

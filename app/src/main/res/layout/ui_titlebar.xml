@@ -22,4 +22,15 @@
         android:layout_centerInParent="true"
         android:text="iLocation"/>
 
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="match_parent"
+        android:layout_centerVertical="true"
+        android:id="@+id/share_iv"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp"
+        android:src="@drawable/common_title_share_pressed"/>
+
+
+
 </RelativeLayout>

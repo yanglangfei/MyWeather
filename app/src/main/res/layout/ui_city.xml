@@ -1,34 +1,193 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
     <include layout="@layout/ui_titlebar"></include>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
         android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
         android:orientation="horizontal">
+
         <TextView
             android:layout_width="wrap_content"
-            android:text="所在城市"
-            android:layout_height="wrap_content"/>
-        <EditText
-            android:layout_width="0dp"
-            android:layout_marginLeft="10dp"
             android:layout_height="wrap_content"
+            android:text="所在城市"/>
+
+        <EditText
+            android:id="@+id/et_city"
+            android:layout_width="0dp"
+            android:background="@drawable/et_select"
+            android:layout_height="35dp"
+            android:hint="输入所在城市"
+            android:textSize="15sp"
+            android:padding="8dp"
+            android:layout_marginLeft="10dp"
             android:layout_weight="1"/>
 
         <Button
+            android:id="@+id/btn_s"
+            android:padding="10dp"
+            android:background="@drawable/btn_shap"
             android:layout_width="wrap_content"
-            android:layout_marginLeft="10dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
             android:text="确定"/>
     </LinearLayout>
+
+    <com.google.android.flexbox.FlexboxLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:id="@+id/lay_city"
+        android:layout_marginRight="10dp"
+        app:flexWrap="wrap"
+        app:flexDirection="row"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="北京"
+            android:padding="10dp"
+            android:id="@+id/c1"
+            android:layout_margin="8dp"
+            android:background="@drawable/city_shap"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="上海"
+            android:padding="10dp"
+            android:layout_margin="8dp"
+            android:background="@drawable/city_shap"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="广州"
+            android:layout_margin="8dp"
+            android:background="@drawable/city_shap"
+            android:padding="10dp"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="南京"
+            android:layout_margin="8dp"
+            android:background="@drawable/city_shap"
+            android:padding="10dp"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="苏州"
+            android:layout_margin="8dp"
+            android:background="@drawable/city_shap"
+            android:padding="10dp"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="武汉"
+            android:layout_margin="8dp"
+            android:background="@drawable/city_shap"
+            android:padding="10dp"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="西安"
+            android:layout_margin="8dp"
+            android:background="@drawable/city_shap"
+            android:padding="10dp"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="成都"
+            android:layout_margin="8dp"
+            android:background="@drawable/city_shap"
+            android:padding="10dp"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="深圳"
+            android:layout_margin="8dp"
+            android:background="@drawable/city_shap"
+            android:padding="10dp"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="宜昌"
+            android:layout_margin="8dp"
+            android:background="@drawable/city_shap"
+            android:padding="10dp"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="郑州"
+            android:layout_margin="8dp"
+            android:background="@drawable/city_shap"
+            android:padding="10dp"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="烟台"
+            android:layout_margin="8dp"
+            android:background="@drawable/city_shap"
+            android:padding="10dp"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="承德"
+            android:layout_margin="8dp"
+            android:background="@drawable/city_shap"
+            android:padding="10dp"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="宝鸡"
+            android:layout_margin="8dp"
+            android:background="@drawable/city_shap"
+            android:padding="10dp"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="渭南"
+            android:layout_margin="8dp"
+            android:background="@drawable/city_shap"
+            android:padding="10dp"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="延安"
+            android:layout_margin="8dp"
+            android:background="@drawable/city_shap"
+            android:padding="10dp"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="杭州"
+            android:layout_margin="8dp"
+            android:background="@drawable/city_shap"
+            android:padding="10dp"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="长沙"
+            android:layout_margin="8dp"
+            android:background="@drawable/city_shap"
+            android:padding="10dp"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="徐州"
+            android:layout_margin="8dp"
+            android:background="@drawable/city_shap"
+            android:padding="10dp"
+            android:layout_height="wrap_content"/>
+
+    </com.google.android.flexbox.FlexboxLayout>
 
 
 </LinearLayout>

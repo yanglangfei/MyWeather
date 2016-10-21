@@ -18,19 +18,11 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp">
 
-        <ImageView
-            android:id="@+id/cityIcon"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/short_update_icon" />
-
         <TextView
             android:id="@+id/tv_ad"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="10dp"
-            android:layout_toRightOf="@+id/cityIcon"
             android:textColor="@android:color/white"
             android:textSize="18sp" />
 
@@ -202,11 +194,12 @@
             android:layout_width="80dp"
             android:layout_height="100dp"
             android:id="@+id/xpIcon"
-            android:src="@drawable/xpz"/>
+            android:src="@drawable/xp"/>
         <TextView
             android:layout_width="wrap_content"
-            android:text="小胖讲段子"
             android:padding="20dp"
+            android:textColor="@android:color/black"
+            android:alpha="0.5"
             android:id="@+id/todz"
             android:textSize="12sp"
             android:layout_toRightOf="@+id/xpIcon"

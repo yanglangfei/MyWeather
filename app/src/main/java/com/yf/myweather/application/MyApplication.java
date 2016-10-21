@@ -2,6 +2,9 @@ package com.yf.myweather.application;
 
 import android.app.Application;
 
+import com.iflytek.cloud.SpeechConstant;
+import com.iflytek.cloud.SpeechUtility;
+
 import org.xutils.x;
 
 /**
@@ -14,5 +17,6 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         x.Ext.init(this);
+        SpeechUtility.createUtility(this,  SpeechConstant.APPID +"=58099a6c" );
     }
 }

@@ -3,6 +3,7 @@ package com.yf.myweather.activity;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -36,8 +37,9 @@ public class WeatherActivity extends BaseActivity implements View.OnClickListene
     private List<TextView> days=new ArrayList<>();
     private  List <TextView> dayWeath=new ArrayList<>();
     private  List<TextView> nightArray=new ArrayList<>();
-    private  String hhSays[]={"哈哈哈","想听荤段子吗，呵呵","看看天气怎么样","需要叫车吗"};
+    private  String hhSays[]={"趣图段子","精彩段子"};
     private ImageView iv_finish;
+    private  ImageView share_iv;
     private  TextView todz;
     private  int i=0;
 
@@ -65,6 +67,8 @@ public class WeatherActivity extends BaseActivity implements View.OnClickListene
 
     private void initView() {
         iv_finish= (ImageView) findViewById(R.id.iv_finish);
+        share_iv= (ImageView) findViewById(R.id.share_iv);
+        share_iv.setOnClickListener(this);
         iv_finish.setOnClickListener(this);
         days.clear();
         dayWeath.clear();
@@ -216,12 +220,26 @@ public class WeatherActivity extends BaseActivity implements View.OnClickListene
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.todz:
-                Intent intent=new Intent();
-                intent.setClass(this,PicJokeActivity.class);
-                startActivity(intent);
+                if(todz.getText().toString().equals("趣图段子")){
+                    Intent intent=new Intent();
+                    intent.setClass(this,PicJokeActivity.class);
+                    startActivity(intent);
+                }else {
+                    Intent intent=new Intent();
+                    intent.setClass(this,JokeActivity.class);
+                    startActivity(intent);
+                }
                 break;
             case R.id.iv_finish:
                 this.finish();
+                break;
+            case R.id.share_iv:
+                Intent intent=new Intent();
+                intent.setAction(Intent.ACTION_SEND);
+                intent.setType("text/plain");
+                intent.putExtra(Intent.EXTRA_TITLE, "天气提醒"); // 分享的主题
+                intent.putExtra(Intent.EXTRA_TEXT, "今日"+tv_ad.getText().toString()+"天气:"+tv_state.getText().toString()+",温度:"+tv_temp.getText().toString()); // 分享的内容
+                startActivity(Intent.createChooser(intent, "请选择"));
                 break;
         }
 
