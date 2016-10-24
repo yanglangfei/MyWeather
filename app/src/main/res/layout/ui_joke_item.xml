@@ -23,6 +23,15 @@
             android:layout_marginRight="10dp"/>
 
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="13dp"
+            android:layout_below="@+id/jk_time"
+            android:textColor="@android:color/darker_gray"
+            android:text="语音技术由科大讯飞提供"/>
+
+
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_below="@+id/jk_time"

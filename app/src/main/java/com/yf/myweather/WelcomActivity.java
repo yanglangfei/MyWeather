@@ -5,7 +5,6 @@ import android.os.Handler;
 
 import com.yf.myweather.activity.BaseActivity;
 import com.yf.myweather.activity.ChoseCityActivity;
-
 /**
  * Created by Administrator on 2016/10/20.
  */
