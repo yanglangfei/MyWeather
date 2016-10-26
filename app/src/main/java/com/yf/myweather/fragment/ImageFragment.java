@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.yf.myweather.R;
 import com.yf.myweather.adapter.ImageAdapter;
 import com.yf.myweather.adapter.VPAdapter;
+import com.yf.myweather.model.ImageFile;
 import com.yf.myweather.utils.AppUtils;
 import com.yf.myweather.view.MyGridView;
 
@@ -143,11 +144,14 @@ public class ImageFragment extends Fragment {
     }
 
     private void upLoadImage(String path) {
-        BmobFile file=new BmobFile(new File(path));
+        final BmobFile file=new BmobFile(new File(path));
         file.uploadblock(new UploadFileListener() {
             @Override
             public void done(BmobException e) {
                 if(e==null){
+                    ImageFile image=new ImageFile();
+                    image.setUrl(file);
+                    image.save();
                     Toast.makeText(getActivity(), "upload success ", Toast.LENGTH_SHORT).show();
                 }else {
                     Toast.makeText(getActivity(), "upload fail:"+e.getErrorCode(), Toast.LENGTH_SHORT).show();
