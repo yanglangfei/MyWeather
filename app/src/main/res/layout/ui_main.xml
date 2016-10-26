@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <include layout="@layout/ui_titlebar"></include>
+
+    <android.support.v4.view.ViewPager
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:id="@+id/mainVp"
+        android:layout_weight="1">
+    </android.support.v4.view.ViewPager>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"></View>
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:id="@+id/mainGroup"
+        android:orientation="horizontal">
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:id="@+id/qxLay"
+            android:layout_height="match_parent">
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="5dp"
+                android:id="@+id/qxIcon"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/qx_no"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_below="@+id/qxIcon"
+                android:layout_marginTop="5dp"
+                android:textSize="12sp"
+                android:id="@+id/qxLabe"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text="气象"/>
+
+        </RelativeLayout>
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@android:color/darker_gray"></View>
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:id="@+id/mtLay"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="5dp"
+                android:id="@+id/mtIcon"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/mt_no"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_below="@+id/mtIcon"
+                android:layout_marginTop="5dp"
+                android:textSize="12sp"
+                android:id="@+id/mtLabe"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text="美图"/>
+
+        </RelativeLayout>
+        <View
+            android:layout_width="1dp"
+            android:visibility="gone"
+            android:layout_height="match_parent"
+            android:background="@android:color/darker_gray"></View>
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:visibility="gone"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="5dp"
+                android:id="@+id/myIcon"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/qx"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_below="@+id/myIcon"
+                android:layout_marginTop="5dp"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text="我的"/>
+
+        </RelativeLayout>
+
+    </RadioGroup>
+
+
+</LinearLayout>

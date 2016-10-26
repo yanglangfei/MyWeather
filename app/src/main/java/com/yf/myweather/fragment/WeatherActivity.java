@@ -1,4 +1,4 @@
-package com.yf.myweather.activity;
+package com.yf.myweather.fragment;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -8,14 +8,21 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.yf.myweather.R;
+import com.yf.myweather.activity.BaseActivity;
+import com.yf.myweather.activity.JokeActivity;
+import com.yf.myweather.activity.PicJokeActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -30,7 +37,7 @@ import java.util.Random;
 /**
  * Created by Administrator on 2016/10/18.
  */
-public class WeatherActivity extends BaseActivity implements View.OnClickListener {
+public class WeatherActivity extends Fragment implements View.OnClickListener {
     private TextView tv_ad,tv_state,tv_wind,tv_temp,tv_wr,tv_remark,day1,day1_wea,nightWea,day2,day2_wea,nightWea2,day3,day3_wea,nightWea3;
     private RelativeLayout bg;
     private  String getWeather="http://op.juhe.cn/onebox/weather/query";
@@ -57,39 +64,47 @@ public class WeatherActivity extends BaseActivity implements View.OnClickListene
             }
         }
     };
+    private View view;
+
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        view=inflater.inflate(R.layout.activity_main,container,false);
+        initView();
+        return view;
+    }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        initView();
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        iv_finish= (ImageView) getActivity().findViewById(R.id.iv_finish);
+        share_iv= (ImageView) getActivity().findViewById(R.id.share_iv);
+        share_iv.setOnClickListener(this);
+        iv_finish.setOnClickListener(this);
     }
 
     private void initView() {
-        iv_finish= (ImageView) findViewById(R.id.iv_finish);
-        share_iv= (ImageView) findViewById(R.id.share_iv);
-        share_iv.setOnClickListener(this);
-        iv_finish.setOnClickListener(this);
         days.clear();
         dayWeath.clear();
         nightArray.clear();
-        bg= (RelativeLayout) findViewById(R.id.bg);
-        tv_ad= (TextView) findViewById(R.id.tv_ad);
-        todz= (TextView) findViewById(R.id.todz);
-        tv_state= (TextView) findViewById(R.id.tv_state);
-        tv_wind= (TextView) findViewById(R.id.tv_wind);
-        tv_temp= (TextView) findViewById(R.id.tv_temp);
-        tv_wr= (TextView) findViewById(R.id.tv_wr);
-        tv_remark= (TextView) findViewById(R.id.tv_remark);
-        day1= (TextView) findViewById(R.id.day1);
-        day1_wea= (TextView) findViewById(R.id.day1_wea);
-        nightWea= (TextView) findViewById(R.id.nightWea1);
-        day2= (TextView) findViewById(R.id.day2);
-        day2_wea= (TextView) findViewById(R.id.day2_wea);
-        nightWea2= (TextView) findViewById(R.id.nightWea2);
-        day3= (TextView) findViewById(R.id.day3);
-        day3_wea= (TextView) findViewById(R.id.day3_wea);
-        nightWea3= (TextView) findViewById(R.id.nightWea3);
+        bg= (RelativeLayout) view.findViewById(R.id.bg);
+        tv_ad= (TextView) view.findViewById(R.id.tv_ad);
+        todz= (TextView) view.findViewById(R.id.todz);
+        tv_state= (TextView) view.findViewById(R.id.tv_state);
+        tv_wind= (TextView) view.findViewById(R.id.tv_wind);
+        tv_temp= (TextView) view.findViewById(R.id.tv_temp);
+        tv_wr= (TextView) view.findViewById(R.id.tv_wr);
+        tv_remark= (TextView) view.findViewById(R.id.tv_remark);
+        day1= (TextView) view.findViewById(R.id.day1);
+        day1_wea= (TextView) view.findViewById(R.id.day1_wea);
+        nightWea= (TextView) view.findViewById(R.id.nightWea1);
+        day2= (TextView) view.findViewById(R.id.day2);
+        day2_wea= (TextView) view.findViewById(R.id.day2_wea);
+        nightWea2= (TextView) view.findViewById(R.id.nightWea2);
+        day3= (TextView) view.findViewById(R.id.day3);
+        day3_wea= (TextView) view.findViewById(R.id.day3_wea);
+        nightWea3= (TextView) view.findViewById(R.id.nightWea3);
         todz.setOnClickListener(this);
         nightArray.add(nightWea);
         nightArray.add(nightWea2);
@@ -100,7 +115,7 @@ public class WeatherActivity extends BaseActivity implements View.OnClickListene
         days.add(day1);
         days.add(day2);
         days.add(day3);
-        String city = getIntent().getStringExtra("city");
+        String city = getArguments().getString("city");
         mHandler.sendEmptyMessage(100);
         initWeatherData(city);
     }
@@ -195,23 +210,23 @@ public class WeatherActivity extends BaseActivity implements View.OnClickListene
     private void setTodayBg(String img) {
         if(img.equals("0")){
             //晴朗
-            bg.setBackground(ContextCompat.getDrawable(this,R.drawable.qing_bg));
+            bg.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.qing_bg));
         }else if(img.equals("1")){
             //多云
-            bg.setBackground(ContextCompat.getDrawable(this,R.drawable.duoyun_bg));
+            bg.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.duoyun_bg));
         }else if(img.equals("2")){
             //阴天
-            bg.setBackground(ContextCompat.getDrawable(this,R.drawable.yin_zuidiceng));
+            bg.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.yin_zuidiceng));
         }else  if(img.equals("3")||img.equals("4")||img.equals("5")||img.equals("6")||img.equals("7")||img.equals("8")){
-            bg.setBackground(ContextCompat.getDrawable(this,R.drawable.yu_bg));
+            bg.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.yu_bg));
         }else if(img.equals("18")){
             //雾
-            bg.setBackground(ContextCompat.getDrawable(this,R.drawable.wu_bg));
+            bg.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.wu_bg));
         }else  if(img.equals("14")||img.equals("15")||img.equals("16")){
             //雪
-            bg.setBackground(ContextCompat.getDrawable(this,R.drawable.xue_bg));
+            bg.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.xue_bg));
         }else {
-            bg.setBackground(ContextCompat.getDrawable(this,R.drawable.qing_bg));
+            bg.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.qing_bg));
         }
     }
 
@@ -222,16 +237,16 @@ public class WeatherActivity extends BaseActivity implements View.OnClickListene
             case R.id.todz:
                 if(todz.getText().toString().equals("趣图段子")){
                     Intent intent=new Intent();
-                    intent.setClass(this,PicJokeActivity.class);
+                    intent.setClass(getActivity(),PicJokeActivity.class);
                     startActivity(intent);
                 }else {
                     Intent intent=new Intent();
-                    intent.setClass(this,JokeActivity.class);
+                    intent.setClass(getActivity(),JokeActivity.class);
                     startActivity(intent);
                 }
                 break;
             case R.id.iv_finish:
-                this.finish();
+                getActivity().finish();
                 break;
             case R.id.share_iv:
                 Intent intent=new Intent();

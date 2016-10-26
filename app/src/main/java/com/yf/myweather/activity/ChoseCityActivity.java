@@ -1,12 +1,8 @@
 package com.yf.myweather.activity;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -19,8 +15,6 @@ import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
 import com.google.android.flexbox.FlexboxLayout;
 import com.yf.myweather.R;
-import com.yf.myweather.activity.BaseActivity;
-import com.yf.myweather.activity.WeatherActivity;
 
 /**
  * Created by Administrator on 2016/10/20.
@@ -89,7 +83,7 @@ public class ChoseCityActivity extends BaseActivity implements View.OnClickListe
                     Toast.makeText(this, "请选择城市", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                Intent intent=new Intent(this,WeatherActivity.class);
+                Intent intent=new Intent(this,MainActivity.class);
                 intent.putExtra("city",cityStr);
                 startActivity(intent);
                 break;

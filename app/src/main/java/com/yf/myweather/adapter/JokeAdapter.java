@@ -30,12 +30,12 @@ public class JokeAdapter extends BaseAdapter implements View.OnClickListener {
     private final Context context;
     private SynthesizerListener mSynListener = new SynthesizerListener(){
         public void onCompleted(SpeechError error) {
-            Toast.makeText(context, "end...", Toast.LENGTH_SHORT).show();
+
         }
         public void onBufferProgress(int percent, int beginPos, int endPos, String info) {}
         //开始播放
         public void onSpeakBegin() {
-            Toast.makeText(context, "start...", Toast.LENGTH_SHORT).show();
+
         }
         //暂停播放
         public void onSpeakPaused() {}

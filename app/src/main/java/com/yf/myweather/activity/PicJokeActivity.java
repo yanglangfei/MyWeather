@@ -61,7 +61,6 @@ public class PicJokeActivity extends BaseActivity implements View.OnClickListene
 
             @Override
             public void onSuccess(String result) {
-                Log.i("111","res:"+result);
                 if(result!=null) {
                     pb.setVisibility(View.GONE);
                     try {

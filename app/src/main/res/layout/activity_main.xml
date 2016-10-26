@@ -6,10 +6,6 @@
     android:background="@drawable/qing_bg"
     android:orientation="vertical">
 
-    <include
-        android:id="@+id/tb"
-        layout="@layout/ui_titlebar"></include>
-
     <RelativeLayout
         android:id="@+id/cityLay"
         android:layout_width="wrap_content"

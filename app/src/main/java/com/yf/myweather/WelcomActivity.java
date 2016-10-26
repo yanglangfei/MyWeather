@@ -5,6 +5,8 @@ import android.os.Handler;
 
 import com.yf.myweather.activity.BaseActivity;
 import com.yf.myweather.activity.ChoseCityActivity;
+import com.yf.myweather.activity.MainActivity;
+
 /**
  * Created by Administrator on 2016/10/20.
  */
@@ -21,7 +23,7 @@ public class WelcomActivity extends BaseActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-             WelcomActivity.this.startActivity(new Intent(WelcomActivity.this,ChoseCityActivity.class));
+             WelcomActivity.this.startActivity(new Intent(WelcomActivity.this,MainActivity.class));
                 WelcomActivity.this.finish();
             }
         },2000);
