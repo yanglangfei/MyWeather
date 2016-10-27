@@ -15,6 +15,9 @@ import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
 import com.google.android.flexbox.FlexboxLayout;
 import com.yf.myweather.R;
+import com.yf.myweather.utils.StoreUtils;
+
+import static com.iflytek.sunflower.config.b.l;
 
 /**
  * Created by Administrator on 2016/10/20.
@@ -23,7 +26,6 @@ import com.yf.myweather.R;
 public class ChoseCityActivity extends BaseActivity implements View.OnClickListener {
     private ImageView iv_finish;
     private EditText mEditText;
-    private  ImageView share_iv;
     private Button mSearch;
     private FlexboxLayout lay_city;
 
@@ -42,6 +44,12 @@ public class ChoseCityActivity extends BaseActivity implements View.OnClickListe
                 if(location!=null&&location.getErrorCode()==0){
                     String adress=location.getAddress();
                     String city=location.getCity();
+                    double lon = location.getLongitude();
+                    double lat = location.getLatitude();
+                    StoreUtils.savePlace(ChoseCityActivity.this,city);
+                    StoreUtils.saveAddress(ChoseCityActivity.this,adress);
+                    StoreUtils.saveLat(ChoseCityActivity.this,lat+"");
+                    StoreUtils.saveLon(ChoseCityActivity.this,lon+"");
                     mEditText.setText(city);
                 }
             }
@@ -54,8 +62,6 @@ public class ChoseCityActivity extends BaseActivity implements View.OnClickListe
         client.setLocationOption(option);
         client.startLocation();
 
-        share_iv= (ImageView) findViewById(R.id.share_iv);
-        share_iv.setVisibility(View.GONE);
 
         lay_city= (FlexboxLayout) findViewById(R.id.lay_city);
         iv_finish= (ImageView) findViewById(R.id.iv_finish);

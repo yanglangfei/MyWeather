@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:background="#ECEDF1"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <include layout="@layout/ui_titlebar"></include>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:background="@drawable/et_drawable"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/nickNameLab"
+            android:textSize="15sp"
+            android:layout_marginLeft="10dp"
+            android:layout_centerVertical="true"
+            android:text="昵 称"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:id="@+id/accountInfo"
+            android:textColorHint="#CACBCC"
+            android:hint="手机号/邮箱"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_centerVertical="true"
+            android:background="@drawable/et_drawable"
+            android:layout_toRightOf="@+id/nickNameLab"
+            android:textSize="15sp"
+            android:layout_marginTop="15dp"
+            android:paddingLeft="10dp"
+            android:layout_height="40dp"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:background="@drawable/et_drawable"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:layout_marginLeft="10dp"
+            android:layout_centerVertical="true"
+            android:id="@+id/pwdLab"
+            android:text="密码"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:id="@+id/passwordInfo"
+        android:hint="密码"
+        android:layout_toRightOf="@+id/pwdLab"
+        android:inputType="textPassword"
+        android:paddingLeft="10dp"
+        android:background="@drawable/et_drawable"
+        android:textSize="15sp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_centerVertical="true"
+        android:textColorHint="#CACBCC"
+        android:layout_height="40dp"/>
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:lineSpacingExtra="8dp"
+        android:textSize="15sp"
+        android:textColor="#9E9E9E"
+        android:layout_height="wrap_content"
+        android:text="密码由6-16位数字、字母或符号组成，不能是9位以下纯数字"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_below="@+id/password"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:background="@drawable/btn_select"
+        android:id="@+id/reginTo"
+        android:text="注  册"
+        android:textSize="18sp"
+        android:textColor="#E2F6FD"
+        android:layout_marginRight="10dp"
+        android:layout_height="45dp"/>
+
+
+</LinearLayout>

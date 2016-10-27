@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="wrap_content"
+              android:background="@android:color/white"
               android:layout_height="wrap_content"
               android:orientation="vertical">
 
@@ -14,7 +15,6 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:id="@+id/takePic"
-            android:background="@color/colorPrimary"
             android:layout_height="match_parent"
             tools:ignore="Suspicious0dp">
 
@@ -30,11 +30,15 @@
             </RelativeLayout>
 
         </RelativeLayout>
+        <View
+            android:layout_width="1dp"
+            android:background="@android:color/darker_gray"
+            android:layout_height="match_parent"
+            ></View>
         <RelativeLayout
             android:layout_width="0dp"
             android:layout_weight="1"
             android:id="@+id/chosePic"
-            android:background="@color/colorPrimaryDark"
             android:layout_height="match_parent">
 
             <RelativeLayout

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <include layout="@layout/ui_titlebar"></include>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:padding="15dp"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#0790c2"
+            android:textSize="18sp"
+            android:layout_centerVertical="true"
+            android:id="@+id/cotyCode"
+            android:text="中国+86"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_toRightOf="@+id/cotyCode"
+            android:background="@drawable/et_select"
+            android:paddingLeft="10dp"
+            android:id="@+id/etPhone"
+            android:textSize="15sp"
+            android:hint="请输入您的手机号"
+            android:layout_height="45dp"/>
+
+    </RelativeLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:text="下一步"
+        android:textSize="18sp"
+        android:textColor="#BBBBBB"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:id="@+id/phoneNext"
+        android:background="#E9EBEC"
+        android:layout_height="40dp"/>
+
+
+</LinearLayout>

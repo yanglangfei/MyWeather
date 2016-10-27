@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
+              android:background="@android:color/white"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
@@ -15,7 +16,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@android:color/darker_gray"></View>
+        android:background="#cccccc"></View>
 
     <RadioGroup
         android:layout_width="match_parent"
@@ -49,7 +50,7 @@
         <View
             android:layout_width="1dp"
             android:layout_height="match_parent"
-            android:background="@android:color/darker_gray"></View>
+            android:background="#cccccc"></View>
         <RelativeLayout
             android:layout_width="0dp"
             android:layout_weight="1"
@@ -76,13 +77,12 @@
         </RelativeLayout>
         <View
             android:layout_width="1dp"
-            android:visibility="gone"
             android:layout_height="match_parent"
-            android:background="@android:color/darker_gray"></View>
+            android:background="#cccccc"></View>
         <RelativeLayout
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:visibility="gone"
+            android:id="@+id/myLay"
             android:layout_height="wrap_content">
             <ImageView
                 android:layout_width="30dp"
@@ -90,12 +90,13 @@
                 android:layout_marginTop="5dp"
                 android:id="@+id/myIcon"
                 android:layout_centerHorizontal="true"
-                android:src="@drawable/qx"/>
+                android:src="@drawable/my_no"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_below="@+id/myIcon"
                 android:layout_marginTop="5dp"
+                android:id="@+id/myLabe"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:text="我的"/>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <include layout="@layout/ui_titlebar" android:id="@+id/tb"></include>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+         android:layout_below="@+id/tb"
+        android:textColor="#9E9E9E"
+        android:textSize="15sp"
+        android:id="@+id/markRes"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:text="您已获取气象通账号"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/markRes"
+        android:layout_marginTop="60dp"
+        android:textColor="#FE9B68"
+        android:id="@+id/accountCreate"
+        android:textSize="18sp"
+        android:layout_centerInParent="true"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_below="@+id/password"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:background="@drawable/btn_select"
+        android:id="@+id/LoginTo"
+        android:text="登  录"
+        android:layout_centerInParent="true"
+        android:textSize="18sp"
+        android:textColor="#E2F6FD"
+        android:layout_marginRight="10dp"
+        android:layout_height="45dp"/>
+
+</RelativeLayout>

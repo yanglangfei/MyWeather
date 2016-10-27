@@ -33,7 +33,6 @@ public class JokeActivity extends BaseActivity implements View.OnClickListener {
     private List<Joke> mJokes=new ArrayList<>();
     private ImageView iv_finish;
     private  String getJoke="http://japi.juhe.cn/joke/content/text.from";
-    private ImageView sharIv;
     private View footer;
     private ProgressBar pb;
     private  int page=1;
@@ -110,8 +109,6 @@ public class JokeActivity extends BaseActivity implements View.OnClickListener {
         pb= (ProgressBar) findViewById(R.id.pb);
         pb.setVisibility(View.VISIBLE);
         footer= LayoutInflater.from(this).inflate(R.layout.ui_footer,null);
-        sharIv= (ImageView) findViewById(R.id.share_iv);
-        sharIv.setVisibility(View.GONE);
         lv_joke= (ListView) findViewById(R.id.lv_joke);
         lv_joke.addFooterView(footer);
         mAdapter=new JokeAdapter(mJokes,this);

@@ -21,14 +21,18 @@ import com.yf.myweather.adapter.ImageAdapter;
 import com.yf.myweather.adapter.VPAdapter;
 import com.yf.myweather.model.ImageFile;
 import com.yf.myweather.utils.AppUtils;
+import com.yf.myweather.utils.StoreUtils;
 import com.yf.myweather.view.MyGridView;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.datatype.BmobFile;
 import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.FindListener;
+import cn.bmob.v3.listener.SaveListener;
 import cn.bmob.v3.listener.UploadFileListener;
 import cn.finalteam.galleryfinal.GalleryFinal;
 import cn.finalteam.galleryfinal.model.PhotoInfo;
@@ -45,7 +49,7 @@ public class ImageFragment extends Fragment {
     private ImageAdapter adapter;
     private ViewPager ivVP;
     private VPAdapter vpAdapter;
-    private int pic[] = {1, 2, 3, 4, 5, 6, 7, 8, 8, 8, 9, 0};
+    private List<ImageFile> mFiles=new ArrayList<>();
     private List<ImageView> mImageViews=new ArrayList<>();
     private FloatingActionButton test_fab;
 
@@ -54,17 +58,59 @@ public class ImageFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.ui_image_list, container, false);
         initView();
+        initLocalData();
+        initOtherData();
         initVpData();
         return view;
     }
 
+    private void initOtherData() {
+        String city=StoreUtils.getPlace(getActivity());
+        BmobQuery<ImageFile> fileBmobQuery=new BmobQuery<>();
+        fileBmobQuery.addWhereNotEqualTo("city",city);
+        fileBmobQuery.findObjects(new FindListener<ImageFile>() {
+            @Override
+            public void done(List<ImageFile> list, BmobException e) {
+                if(e==null&&list!=null){
+                    adapter.setFiles(list);
+                }
+                adapter.notifyDataSetChanged();
+            }
+
+        });
+    }
+
+    private void initLocalData() {
+        String city=StoreUtils.getPlace(getActivity());
+        BmobQuery<ImageFile> fileBmobQuery=new BmobQuery<>();
+        fileBmobQuery.addWhereEqualTo("city",city);
+        fileBmobQuery.findObjects(new FindListener<ImageFile>() {
+            @Override
+            public void done(List<ImageFile> list, BmobException e) {
+                if(e==null&&list!=null){
+                    mAdapter.setFiles(list);
+                }
+                mAdapter.notifyDataSetChanged();
+            }
+
+        });
+    }
+
     private void initVpData() {
         mImageViews.clear();
-        for (int i = 0; i < 4; i++) {
-            ImageView imageView1=new ImageView(getActivity());
-            imageView1.setImageResource(R.drawable.dog);
-            mImageViews.add(imageView1);
-        }
+        ImageView ad1=new ImageView(getActivity());
+        ad1.setScaleType(ImageView.ScaleType.FIT_XY);
+        ad1.setImageResource(R.drawable.ad1);
+        mImageViews.add(ad1);
+        ImageView ad2=new ImageView(getActivity());
+        ad2.setScaleType(ImageView.ScaleType.FIT_XY);
+        ad2.setImageResource(R.drawable.ad2);
+        mImageViews.add(ad2);
+        ImageView ad3=new ImageView(getActivity());
+        ad3.setScaleType(ImageView.ScaleType.FIT_XY);
+        ad3.setImageResource(R.drawable.ad3);
+        mImageViews.add(ad3);
+
         vpAdapter.notifyDataSetChanged();
     }
 
@@ -78,9 +124,9 @@ public class ImageFragment extends Fragment {
         vpAdapter=new VPAdapter(mImageViews,getActivity());
         ivVP.setAdapter(vpAdapter);
 
-        mAdapter = new ImageAdapter(getActivity(), pic, width, height);
+        mAdapter = new ImageAdapter(getActivity(), mFiles, width, height);
         gvLocal.setAdapter(mAdapter);
-        adapter = new ImageAdapter(getActivity(), pic, width, height);
+        adapter = new ImageAdapter(getActivity(), mFiles, width, height);
         gvGlob.setAdapter(adapter);
         test_fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -151,10 +197,25 @@ public class ImageFragment extends Fragment {
                 if(e==null){
                     ImageFile image=new ImageFile();
                     image.setUrl(file);
-                    image.save();
-                    Toast.makeText(getActivity(), "upload success ", Toast.LENGTH_SHORT).show();
+                    image.setCity(StoreUtils.getPlace(getActivity()));
+                    image.setDev(1);
+                    image.setLat(StoreUtils.getLat(getActivity()));
+                    image.setLon(StoreUtils.getLon(getActivity()));
+                    image.setAddress(StoreUtils.getAddress(getActivity()));
+                    image.save(new SaveListener<String>() {
+                        @Override
+                        public void done(String s, BmobException e) {
+                            if(e==null){
+                                initLocalData();
+                                Toast.makeText(getActivity(), "上传成功", Toast.LENGTH_SHORT).show();
+                            }else {
+                                Toast.makeText(getActivity(), "上传失败"+e.getErrorCode(), Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+
                 }else {
-                    Toast.makeText(getActivity(), "upload fail:"+e.getErrorCode(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "上传失败"+e.getErrorCode(), Toast.LENGTH_SHORT).show();
                 }
 
             }

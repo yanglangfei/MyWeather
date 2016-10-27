@@ -35,7 +35,6 @@ public class PicJokeActivity extends BaseActivity implements View.OnClickListene
     private  String getPicJoke="http://japi.juhe.cn/joke/img/text.from";
     private List<PicJoke> mPicJokes=new ArrayList<>();
     private  ImageView iv_finish;
-    private ImageView sharIv;
     private  int page=1;
     private View footer;
 
@@ -114,8 +113,6 @@ public class PicJokeActivity extends BaseActivity implements View.OnClickListene
         pb= (ProgressBar) findViewById(R.id.pb);
         pb.setVisibility(View.VISIBLE);
         footer= LayoutInflater.from(this).inflate(R.layout.ui_footer,null);
-        sharIv= (ImageView) findViewById(R.id.share_iv);
-        sharIv.setVisibility(View.GONE);
         lv_joke= (ListView) findViewById(R.id.lv_joke);
         lv_joke.addFooterView(footer);
         mAdapter=new PicAdapter(mPicJokes,this);

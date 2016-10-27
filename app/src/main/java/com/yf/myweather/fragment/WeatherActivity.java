@@ -44,9 +44,8 @@ public class WeatherActivity extends Fragment implements View.OnClickListener {
     private List<TextView> days=new ArrayList<>();
     private  List <TextView> dayWeath=new ArrayList<>();
     private  List<TextView> nightArray=new ArrayList<>();
-    private  String hhSays[]={"趣图段子","精彩段子"};
+    private  String hhSays[]={"趣图段子","精彩段子","好朋友就要懂得分享，告诉她今天的天气"};
     private ImageView iv_finish;
-    private  ImageView share_iv;
     private  TextView todz;
     private  int i=0;
 
@@ -79,8 +78,6 @@ public class WeatherActivity extends Fragment implements View.OnClickListener {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         iv_finish= (ImageView) getActivity().findViewById(R.id.iv_finish);
-        share_iv= (ImageView) getActivity().findViewById(R.id.share_iv);
-        share_iv.setOnClickListener(this);
         iv_finish.setOnClickListener(this);
     }
 
@@ -133,7 +130,6 @@ public class WeatherActivity extends Fragment implements View.OnClickListener {
 
             @Override
             public void onSuccess(String result) {
-                Log.i("111","res:"+result);
                 if(result!=null){
                     try {
                         JSONObject object=new JSONObject(result);
@@ -239,22 +235,21 @@ public class WeatherActivity extends Fragment implements View.OnClickListener {
                     Intent intent=new Intent();
                     intent.setClass(getActivity(),PicJokeActivity.class);
                     startActivity(intent);
-                }else {
+                }else if(todz.getText().toString().equals("精彩段子")){
                     Intent intent=new Intent();
                     intent.setClass(getActivity(),JokeActivity.class);
                     startActivity(intent);
+                }else {
+                    Intent intent=new Intent();
+                    intent.setAction(Intent.ACTION_SEND);
+                    intent.setType("text/plain");
+                    intent.putExtra(Intent.EXTRA_TITLE, "天气提醒"); // 分享的主题
+                    intent.putExtra(Intent.EXTRA_TEXT, "今日"+tv_ad.getText().toString()+"天气:"+tv_state.getText().toString()+",温度:"+tv_temp.getText().toString()); // 分享的内容
+                    startActivity(Intent.createChooser(intent, "请选择"));
                 }
                 break;
             case R.id.iv_finish:
                 getActivity().finish();
-                break;
-            case R.id.share_iv:
-                Intent intent=new Intent();
-                intent.setAction(Intent.ACTION_SEND);
-                intent.setType("text/plain");
-                intent.putExtra(Intent.EXTRA_TITLE, "天气提醒"); // 分享的主题
-                intent.putExtra(Intent.EXTRA_TEXT, "今日"+tv_ad.getText().toString()+"天气:"+tv_state.getText().toString()+",温度:"+tv_temp.getText().toString()); // 分享的内容
-                startActivity(Intent.createChooser(intent, "请选择"));
                 break;
         }
 

@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.yf.myweather.R;
 import com.yf.myweather.adapter.MainAdapter;
 import com.yf.myweather.fragment.ImageFragment;
+import com.yf.myweather.fragment.MyFragment;
 import com.yf.myweather.fragment.WeatherActivity;
 
 import java.util.ArrayList;
@@ -28,16 +29,20 @@ import java.util.List;
 public class MainActivity extends FragmentActivity implements ViewPager.OnPageChangeListener {
     private RelativeLayout qxLay;
     private  RelativeLayout mtLay;
+    private  RelativeLayout myLay;
     private View currentButton;
     private ImageView mtIcon;
     private  ImageView qxIcon;
     private TextView qxLabe;
     private  TextView mtLabe;
+    private  ImageView myIcon;
+    private  TextView myLabe;
     private MainAdapter adapter;
     private ViewPager mainVp;
     private List<Fragment> fragments=new ArrayList<>();
     private WeatherActivity   weather;
     private ImageFragment image;
+    private MyFragment mMyFragment;
     private String city;
 
     @Override
@@ -50,14 +55,15 @@ public class MainActivity extends FragmentActivity implements ViewPager.OnPageCh
 
     private void initFragments() {
         fragments.clear();
-
         weather=new WeatherActivity();
         Bundle build=new Bundle();
         build.putString("city",city);
         weather.setArguments(build);
         image=new ImageFragment();
+        mMyFragment=new MyFragment();
         fragments.add(weather);
         fragments.add(image);
+        fragments.add(mMyFragment);
         adapter.notifyDataSetChanged();
     }
 
@@ -69,11 +75,15 @@ public class MainActivity extends FragmentActivity implements ViewPager.OnPageCh
         qxLabe= (TextView) findViewById(R.id.qxLabe);
         mtLabe= (TextView) findViewById(R.id.mtLabe);
         mainVp= (ViewPager) findViewById(R.id.mainVp);
+        myLay= (RelativeLayout) findViewById(R.id.myLay);
+        myIcon= (ImageView) findViewById(R.id.myIcon);
+        myLabe= (TextView) findViewById(R.id.myLabe);
         city=getIntent().getStringExtra("city");
         adapter=new MainAdapter(getSupportFragmentManager(),fragments);
         mainVp.setAdapter(adapter);
         qxLay.setOnClickListener(qxClick);
         mtLay.setOnClickListener(mtClick);
+        myLay.setOnClickListener(myClick);
         qxLay.performClick();
 
         mainVp.setOnPageChangeListener(this);
@@ -98,6 +108,14 @@ public class MainActivity extends FragmentActivity implements ViewPager.OnPageCh
         }
     };
 
+    private View.OnClickListener myClick=new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            setChange(2);
+            setButton(view);
+        }
+    };
+
     private void setButton(View v) {
         // 将上个控件设置为可点击
         if (currentButton != null && currentButton.getId() != v.getId()) {
@@ -113,15 +131,27 @@ public class MainActivity extends FragmentActivity implements ViewPager.OnPageCh
         if(change==0){
             qxIcon.setImageResource(R.drawable.qx);
             mtIcon.setImageResource(R.drawable.mt_no);
+            myIcon.setImageResource(R.drawable.my_no);
             qxLabe.setTextColor(Color.BLUE);
             mtLabe.setTextColor(Color.BLACK);
+            myLabe.setTextColor(Color.BLACK);
             mainVp.setCurrentItem(0);
-        }else {
+        }else if(change==1){
             qxIcon.setImageResource(R.drawable.qx_no);
+            myIcon.setImageResource(R.drawable.my_no);
             mtIcon.setImageResource(R.drawable.mt);
             mtLabe.setTextColor(Color.BLUE);
             qxLabe.setTextColor(Color.BLACK);
+            myLabe.setTextColor(Color.BLACK);
             mainVp.setCurrentItem(1);
+        }else {
+            qxIcon.setImageResource(R.drawable.qx_no);
+            myIcon.setImageResource(R.drawable.my);
+            mtIcon.setImageResource(R.drawable.mt_no);
+            mtLabe.setTextColor(Color.BLACK);
+            qxLabe.setTextColor(Color.BLACK);
+            myLabe.setTextColor(Color.BLUE);
+            mainVp.setCurrentItem(2);
         }
 
     }
@@ -136,9 +166,12 @@ public class MainActivity extends FragmentActivity implements ViewPager.OnPageCh
         if(position==0){
             setChange(0);
             setButton(qxLay);
-        }else {
+        }else if(position==1){
             setChange(1);
             setButton(mtLay);
+        }else {
+            setChange(2);
+            setButton(myLay);
         }
 
 

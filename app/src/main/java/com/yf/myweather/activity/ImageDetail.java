@@ -19,7 +19,6 @@ import com.yf.myweather.view.ZoomImageView;
 public class ImageDetail extends BaseActivity implements View.OnClickListener {
     private ImageView iv_zoom;
     private  ImageView iv_finish;
-    private  ImageView share_iv;
 
 
     @Override
@@ -30,8 +29,6 @@ public class ImageDetail extends BaseActivity implements View.OnClickListener {
     }
 
     private void initView() {
-        share_iv= (ImageView) findViewById(R.id.share_iv);
-        share_iv.setVisibility(View.GONE);
         iv_zoom= (ImageView) findViewById(R.id.iv_zoom);
         iv_finish= (ImageView) findViewById(R.id.iv_finish);
         iv_finish.setOnClickListener(this);

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <include layout="@layout/ui_titlebar"></include>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:padding="10dp"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="我们已给您的手机号码  "
+            android:id="@+id/mark1"
+            android:textColor="#979797"
+            android:textSize="15sp"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_toRightOf="@+id/mark1"
+            android:text="+086-15221299512"
+            android:id="@+id/markPhone"
+            android:textSize="15sp"
+            android:textColor="#F6C4A5"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:textColor="#979797"
+            android:layout_below="@+id/markPhone"
+            android:text="发送了一条验证短信"/>
+
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:padding="10dp"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+        <EditText
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_toRightOf="@+id/cotyCode"
+            android:background="@drawable/et_select"
+            android:paddingLeft="10dp"
+            android:textSize="15sp"
+            android:id="@+id/actionCode"
+            android:hint="请输入验证码"
+            android:layout_height="45dp"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textColor="#BBBBBB"
+            android:padding="8dp"
+            android:id="@+id/ReSend"
+            android:textSize="14sp"
+            android:background="#E9EBEC"
+            android:layout_toRightOf="@+id/actionCode"
+            android:text="重新发送"/>
+
+    </LinearLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:text="下一步"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:id="@+id/codeNext"
+        android:textSize="18sp"
+        android:textColor="#BBBBBB"
+        android:background="#E9EBEC"
+        android:layout_height="40dp"/>
+
+</LinearLayout>
