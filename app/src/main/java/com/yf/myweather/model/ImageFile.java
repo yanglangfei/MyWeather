@@ -1,5 +1,7 @@
 package com.yf.myweather.model;
 
+import java.io.Serializable;
+
 import cn.bmob.v3.BmobObject;
 import cn.bmob.v3.datatype.BmobFile;
 
@@ -7,7 +9,7 @@ import cn.bmob.v3.datatype.BmobFile;
  * Created by Administrator on 2016/10/26.
  */
 
-public class ImageFile extends BmobObject {
+public class ImageFile extends BmobObject implements Serializable{
     private BmobFile url;
     private  String city;
     private  String lon;

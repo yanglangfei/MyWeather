@@ -23,6 +23,7 @@ import com.yf.myweather.R;
 import com.yf.myweather.activity.BaseActivity;
 import com.yf.myweather.activity.JokeActivity;
 import com.yf.myweather.activity.PicJokeActivity;
+import com.yf.myweather.utils.StoreUtils;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -44,6 +45,8 @@ public class WeatherActivity extends Fragment implements View.OnClickListener {
     private List<TextView> days=new ArrayList<>();
     private  List <TextView> dayWeath=new ArrayList<>();
     private  List<TextView> nightArray=new ArrayList<>();
+    private String renWu="http://p4.zbjimg.com/task/2012-08/12/1918179/502706d66f0bf.gif";
+
     private  String hhSays[]={"趣图段子","精彩段子","好朋友就要懂得分享，告诉她今天的天气"};
     private ImageView iv_finish;
     private  TextView todz;
@@ -72,6 +75,18 @@ public class WeatherActivity extends Fragment implements View.OnClickListener {
         view=inflater.inflate(R.layout.activity_main,container,false);
         initView();
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mHandler.sendEmptyMessage(100);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        mHandler.removeMessages(100);
     }
 
     @Override
@@ -113,7 +128,6 @@ public class WeatherActivity extends Fragment implements View.OnClickListener {
         days.add(day2);
         days.add(day3);
         String city = getArguments().getString("city");
-        mHandler.sendEmptyMessage(100);
         initWeatherData(city);
     }
 

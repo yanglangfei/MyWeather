@@ -1,6 +1,7 @@
 package com.yf.myweather.activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -24,7 +25,7 @@ import cn.bmob.v3.listener.UpdateListener;
  * Created by Administrator on 2016/10/27.
  */
 
-public class ReginResult extends Activity implements View.OnClickListener {
+public class ReginResult extends BaseActivity implements View.OnClickListener {
     private Button LoginTo;
     private TextView accountCreate;
     private String accountObj;
@@ -49,22 +50,19 @@ public class ReginResult extends Activity implements View.OnClickListener {
     }
 
     private void createAccount() {
-        BmobQuery<User> user=new BmobQuery<>();
-        user.findObjects(new FindListener<User>() {
+        BmobQuery<User> query=new BmobQuery<>();
+        query.addWhereEqualTo("state",0)
+        .findObjects(new FindListener<User>() {
             @Override
             public void done(List<User> list, BmobException e) {
-               if(e==null){
-                   if(list!=null){
-                       accountObj=StringUtil.createAccount(list,9);
-                       LoginTo.setText(accountObj);
-                       accountCreate.setText("正在获取账号");
-                       createUser(accountObj);
-                   }else {
-                       Toast.makeText(ReginResult.this, "null,,,", Toast.LENGTH_SHORT).show();
-                   }
-               }else {
-                   Toast.makeText(ReginResult.this, "账号获取失败1:"+e.getErrorCode(), Toast.LENGTH_SHORT).show();
-               }
+                if(e==null){
+                    accountObj=StringUtil.createAccountObj(list,9);
+                    accountCreate.setText("正在获取账号");
+                    createUser(accountObj);
+                }else {
+                    Toast.makeText(ReginResult.this, "账号获取失败", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
     }
@@ -86,13 +84,13 @@ public class ReginResult extends Activity implements View.OnClickListener {
                                accountCreate.setText(accountObj);
                                Toast.makeText(ReginResult.this, "账号获取成功", Toast.LENGTH_SHORT).show();
                            }else {
-                               Toast.makeText(ReginResult.this, "账号获取失败2:"+e.getMessage(), Toast.LENGTH_SHORT).show();
+                               Toast.makeText(ReginResult.this, "账号获取失败"+e.getMessage(), Toast.LENGTH_SHORT).show();
                            }
                        }
                    });
 
                }else {
-                   Toast.makeText(ReginResult.this, "账号获取失败3:"+e.getMessage(), Toast.LENGTH_SHORT).show();
+                   Toast.makeText(ReginResult.this, "账号获取失败", Toast.LENGTH_SHORT).show();
                }
             }
         });
@@ -103,6 +101,9 @@ public class ReginResult extends Activity implements View.OnClickListener {
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.LoginTo:
+                Intent login=new Intent();
+                login.setClass(this,Login.class);
+                startActivity(login);
                 this.finish();
                 break;
             case R.id.iv_finish:

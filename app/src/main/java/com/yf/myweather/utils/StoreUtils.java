@@ -66,16 +66,22 @@ public class StoreUtils {
         et.putString("lat",lat).commit();
     }
 
-    public  static  int getUid(Context context){
+    public  static  String getUid(Context context){
         userInfo=context.getSharedPreferences("userInfo",Context.MODE_PRIVATE);
-        return  userInfo.getInt("uId",-1);
+        return  userInfo.getString("uId","");
     }
 
 
-    public  static  void saveUid(Context context,int  uId){
+    public  static  void saveUid(Context context,String  uId){
         userInfo=context.getSharedPreferences("userInfo",Context.MODE_PRIVATE);
-        SharedPreferences.Editor et = latstr.edit();
-        et.putInt("uId",uId).commit();
+        SharedPreferences.Editor et = userInfo.edit();
+        et.putString("uId",uId).commit();
+    }
+
+    public  static  void cleanUid(Context context){
+        userInfo=context.getSharedPreferences("userInfo",Context.MODE_PRIVATE);
+        SharedPreferences.Editor et = userInfo.edit();
+        et.clear().commit();
     }
 }
 

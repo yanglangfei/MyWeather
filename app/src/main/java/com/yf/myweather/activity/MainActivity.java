@@ -18,6 +18,7 @@ import com.yf.myweather.adapter.MainAdapter;
 import com.yf.myweather.fragment.ImageFragment;
 import com.yf.myweather.fragment.MyFragment;
 import com.yf.myweather.fragment.WeatherActivity;
+import com.yf.myweather.utils.AppManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -67,7 +68,9 @@ public class MainActivity extends FragmentActivity implements ViewPager.OnPageCh
         adapter.notifyDataSetChanged();
     }
 
+
     private void initView() {
+        AppManager.addActivity(this);
         mtLay= (RelativeLayout) findViewById(R.id.mtLay);
         qxLay= (RelativeLayout) findViewById(R.id.qxLay);
         mtIcon= (ImageView) findViewById(R.id.mtIcon);
@@ -132,7 +135,7 @@ public class MainActivity extends FragmentActivity implements ViewPager.OnPageCh
             qxIcon.setImageResource(R.drawable.qx);
             mtIcon.setImageResource(R.drawable.mt_no);
             myIcon.setImageResource(R.drawable.my_no);
-            qxLabe.setTextColor(Color.BLUE);
+            qxLabe.setTextColor(Color.parseColor("#0790c2"));
             mtLabe.setTextColor(Color.BLACK);
             myLabe.setTextColor(Color.BLACK);
             mainVp.setCurrentItem(0);
@@ -140,7 +143,7 @@ public class MainActivity extends FragmentActivity implements ViewPager.OnPageCh
             qxIcon.setImageResource(R.drawable.qx_no);
             myIcon.setImageResource(R.drawable.my_no);
             mtIcon.setImageResource(R.drawable.mt);
-            mtLabe.setTextColor(Color.BLUE);
+            mtLabe.setTextColor(Color.parseColor("#0790c2"));
             qxLabe.setTextColor(Color.BLACK);
             myLabe.setTextColor(Color.BLACK);
             mainVp.setCurrentItem(1);
@@ -150,7 +153,7 @@ public class MainActivity extends FragmentActivity implements ViewPager.OnPageCh
             mtIcon.setImageResource(R.drawable.mt_no);
             mtLabe.setTextColor(Color.BLACK);
             qxLabe.setTextColor(Color.BLACK);
-            myLabe.setTextColor(Color.BLUE);
+            myLabe.setTextColor(Color.parseColor("#0790c2"));
             mainVp.setCurrentItem(2);
         }
 

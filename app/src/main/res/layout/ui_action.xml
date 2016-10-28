@@ -46,6 +46,8 @@
             android:layout_toRightOf="@+id/cotyCode"
             android:background="@drawable/et_select"
             android:paddingLeft="10dp"
+            android:inputType="number"
+            android:maxLength="4"
             android:textSize="15sp"
             android:id="@+id/actionCode"
             android:hint="请输入验证码"

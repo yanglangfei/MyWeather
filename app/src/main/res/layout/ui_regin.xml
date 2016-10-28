@@ -25,6 +25,7 @@
             android:background="@drawable/et_select"
             android:paddingLeft="10dp"
             android:id="@+id/etPhone"
+            android:inputType="phone"
             android:textSize="15sp"
             android:hint="请输入您的手机号"
             android:layout_height="45dp"/>

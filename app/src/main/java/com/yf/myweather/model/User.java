@@ -1,5 +1,7 @@
 package com.yf.myweather.model;
 
+import java.io.Serializable;
+
 import cn.bmob.v3.BmobObject;
 import cn.bmob.v3.datatype.BmobFile;
 
@@ -7,10 +9,10 @@ import cn.bmob.v3.datatype.BmobFile;
  * Created by Administrator on 2016/10/27.
  */
 
-public class User extends BmobObject {
-    private  int id;
+public class User extends BmobObject implements Serializable{
     private  String trueName;
     private  String userName;
+    private  int isLogin;
     private  String password;
     private  int state;
     private BmobFile face;
@@ -21,6 +23,14 @@ public class User extends BmobObject {
     private  int sex;
     private  String account;
     private  String telPhone;
+
+    public int getIsLogin() {
+        return isLogin;
+    }
+
+    public void setIsLogin(int isLogin) {
+        this.isLogin = isLogin;
+    }
 
     public String getTelPhone() {
         return telPhone;
@@ -36,14 +46,6 @@ public class User extends BmobObject {
 
     public void setAccount(String account) {
         this.account = account;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getTrueName() {

@@ -25,7 +25,7 @@
             android:layout_width="match_parent"
             android:id="@+id/accountInfo"
             android:textColorHint="#CACBCC"
-            android:hint="手机号/邮箱"
+            android:maxLength="8"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_centerVertical="true"
@@ -64,6 +64,7 @@
         android:textSize="15sp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
+        android:maxLength="32"
         android:layout_centerVertical="true"
         android:textColorHint="#CACBCC"
         android:layout_height="40dp"/>

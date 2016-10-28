@@ -11,16 +11,22 @@ import android.widget.ImageView;
 import android.widget.Toast;
 import com.yf.myweather.R;
 import com.yf.myweather.model.User;
+import com.yf.myweather.utils.MD5Util;
 import com.yf.myweather.utils.StoreUtils;
+import com.yf.myweather.utils.StringUtil;
 
+import java.util.List;
+
+import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.FindListener;
 import cn.bmob.v3.listener.SaveListener;
 
 /**
  * Created by Administrator on 2016/10/27.
  */
 
-public class ReginInfo extends Activity implements View.OnClickListener {
+public class ReginInfo extends BaseActivity implements View.OnClickListener {
     private Button reginTo;
     private  ImageView iv_finish;
     private EditText passwordInfo;
@@ -58,30 +64,35 @@ public class ReginInfo extends Activity implements View.OnClickListener {
                     Toast.makeText(this, "请输入密码", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                //提交注册信息
-                User user=new User();
-                user.setAddress(StoreUtils.getAddress(this));
-                user.setPassword(pwdStr);
-                user.setUserName(accountStr);
-                user.setTelPhone(phone);
-                user.save(new SaveListener<String>() {
-                    @Override
-                    public void done(String s, BmobException e) {
-                        if(e==null){
-                            Toast.makeText(ReginInfo.this, "注册成功", Toast.LENGTH_SHORT).show();
-                            Intent intent=new Intent(ReginInfo.this,ReginResult.class);
-                            intent.putExtra("phone",phone);
-                            startActivity(intent);
-                            ReginInfo.this.finish();
-                        }else {
-                            Toast.makeText(ReginInfo.this, "注册失败:"+e.getMessage(), Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
+                createRegin(MD5Util.MD5(pwdStr),accountStr);
                 break;
             case R.id.iv_finish:
                 this.finish();
                 break;
         }
     }
+
+    private void createRegin(String pwdStr, String accountStr) {
+        //提交注册信息
+        User user=new User();
+        user.setAddress(StoreUtils.getAddress(this));
+        user.setPassword(pwdStr);
+        user.setUserName(accountStr);
+        user.setTelPhone(phone);
+        user.save(new SaveListener<String>() {
+            @Override
+            public void done(String s, BmobException e) {
+                if(e==null){
+                    Toast.makeText(ReginInfo.this, "注册成功", Toast.LENGTH_SHORT).show();
+                    Intent intent=new Intent(ReginInfo.this,ReginResult.class);
+                    intent.putExtra("phone",phone);
+                    startActivity(intent);
+                    ReginInfo.this.finish();
+                }else {
+                    Toast.makeText(ReginInfo.this, "注册失败:"+e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+
 }

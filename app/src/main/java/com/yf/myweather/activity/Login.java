@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.yf.myweather.R;
 import com.yf.myweather.model.User;
+import com.yf.myweather.utils.MD5Util;
 import com.yf.myweather.utils.StoreUtils;
 
 import java.util.ArrayList;
@@ -25,7 +26,7 @@ import cn.bmob.v3.listener.FindListener;
  * Created by Administrator on 2016/10/27.
  */
 
-public class Login extends Activity implements View.OnClickListener {
+public class Login extends BaseActivity implements View.OnClickListener {
     private TextView toRegin;
     private ImageView iv_finish;
     private EditText account;
@@ -91,8 +92,8 @@ public class Login extends Activity implements View.OnClickListener {
                                 Toast.makeText(Login.this, "用户不存在", Toast.LENGTH_SHORT).show();
                             }else  {
                                 String pwd = list.get(0).getPassword();
-                                if(pwdStr.equals(pwd)){
-                                    int uId=list.get(0).getId();
+                                if(pwd.equals(MD5Util.MD5(pwdStr))){
+                                    String uId=list.get(0).getObjectId();
                                     StoreUtils.saveUid(Login.this,uId);
                                     Toast.makeText(Login.this, "登录成功", Toast.LENGTH_SHORT).show();
                                     Login.this.finish();

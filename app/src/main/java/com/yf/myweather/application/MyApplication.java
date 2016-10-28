@@ -45,44 +45,6 @@ public class MyApplication extends Application {
        //Mob
         SMSSDK.initSDK(this, "186779d041014", "cc0c60321b3747ea3b19052577d21f64");
 
-        EventHandler handler=new EventHandler(){
-            @Override
-            public void onRegister() {
-                super.onRegister();
-            }
-
-            @Override
-            public void beforeEvent(int i, Object o) {
-                super.beforeEvent(i, o);
-            }
-
-            @Override
-            public void afterEvent(int event, int result, Object data) {
-                if (result == SMSSDK.RESULT_COMPLETE) {
-                    //回调完成
-                    if (event == SMSSDK.EVENT_SUBMIT_VERIFICATION_CODE) {
-                        //提交验证码成功
-                        Log.i("111","subcode:"+result+"    data:"+data);
-                    }else if (event == SMSSDK.EVENT_GET_VERIFICATION_CODE){
-                        //获取验证码成功
-                        Log.i("111","getcode:"+result+"    data:"+data);
-                    }else if (event ==SMSSDK.EVENT_GET_SUPPORTED_COUNTRIES){
-                        //返回支持发送验证码的国家列表
-                        Log.i("111","getcoty:"+result+"    data:"+data);
-                    }
-                }else{
-                    ((Throwable)data).printStackTrace();
-                    Log.i("111","error:"+result+"    data:"+data);
-                }
-            }
-
-            @Override
-            public void onUnregister() {
-                super.onUnregister();
-            }
-        };
-        SMSSDK.registerEventHandler(handler);
-
 
         //相机、相册 GalleryFinal
         ThemeConfig theme = new ThemeConfig.Builder().build();  //设置主题

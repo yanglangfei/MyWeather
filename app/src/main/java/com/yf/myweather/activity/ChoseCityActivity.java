@@ -15,6 +15,7 @@ import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
 import com.google.android.flexbox.FlexboxLayout;
 import com.yf.myweather.R;
+import com.yf.myweather.utils.AppManager;
 import com.yf.myweather.utils.StoreUtils;
 
 import static com.iflytek.sunflower.config.b.l;

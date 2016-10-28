@@ -97,6 +97,7 @@
                 android:layout_below="@+id/myIcon"
                 android:layout_marginTop="5dp"
                 android:id="@+id/myLabe"
+                android:textSize="12sp"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:text="我的"/>

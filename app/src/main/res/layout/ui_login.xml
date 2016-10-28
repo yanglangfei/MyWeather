@@ -5,12 +5,13 @@
               android:layout_height="match_parent">
     <include layout="@layout/ui_titlebar" android:id="@+id/tb"></include>
 
-    <com.yf.myweather.view.CircleImageView
+    <ImageView
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_marginTop="50dp"
         android:layout_below="@+id/tb"
         android:id="@+id/logo"
+        android:visibility="gone"
         android:src="@drawable/dog"
         android:layout_centerHorizontal="true"
         />
@@ -22,7 +23,7 @@
         android:textColorHint="#CACBCC"
         android:hint="手机号/账号"
         android:textSize="15sp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="25dp"
         android:paddingLeft="10dp"
         android:background="@drawable/et_drawable"
         android:layout_height="40dp"/>
@@ -58,6 +59,7 @@
         android:checked="true"
         android:button="@drawable/check_select"
         android:id="@+id/read"
+        android:visibility="gone"
         android:textSize="15sp"
         android:layout_marginTop="10dp"
         android:layout_height="wrap_content"/>
@@ -67,6 +69,7 @@
         android:layout_width="wrap_content"
         android:text="我已阅读并同意"
         android:textSize="15sp"
+        android:visibility="gone"
         android:layout_marginLeft="8dp"
         android:textColor="#848484"
         android:id="@+id/readStr"
@@ -77,6 +80,7 @@
         android:layout_width="wrap_content"
         android:text="服务条款"
         android:textSize="15sp"
+        android:visibility="gone"
         android:textColor="#1BB7F0"
         android:layout_toRightOf="@+id/readStr"
         android:layout_alignBottom="@+id/readStr"
@@ -88,6 +92,7 @@
         android:text="无法登录?"
         android:id="@+id/noLogin"
         android:textSize="15sp"
+        android:visibility="invisible"
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="15dp"
         android:layout_marginBottom="20dp"

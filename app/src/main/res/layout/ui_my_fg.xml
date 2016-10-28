@@ -6,7 +6,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:background="@android:color/holo_blue_light"
+        android:background="#b0cae9"
         android:layout_height="200dp">
 
         <RelativeLayout
@@ -14,11 +14,21 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             >
-            <com.yf.myweather.view.CircleImageView
+            <ImageView
                 android:layout_width="80dp"
-                android:src="@drawable/dog"
+                android:src="@drawable/touxiang"
                 android:id="@+id/userLogo"
                 android:layout_height="80dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/userLogo"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/MrakLogin"
+                android:textColor="@android:color/black"
+                android:layout_marginTop="10dp"
+                android:textSize="15sp"
+                android:text="请 登 录"/>
         </RelativeLayout>
 
 
@@ -26,14 +36,228 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
+        android:padding="10dp"
         android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:id="@+id/locationIcon"
+            android:layout_centerVertical="true"
+            android:src="@drawable/city_item_location"/>
         <TextView
             android:layout_width="wrap_content"
-            android:padding="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/locationIcon"
+            android:layout_centerVertical="true"
+            android:textColor="#696969"
             android:id="@+id/locationLabe"
             android:layout_height="wrap_content"
             />
 
     </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#ccc"></View>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="horizontal">
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:id="@+id/collLay"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:id="@+id/scIcon"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/collect"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:layout_below="@+id/scIcon"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:textColor="#787878"
+                    android:text="收藏"/>
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="#ccc"></View>
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:id="@+id/upLay"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:id="@+id/upIcon"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/up"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:layout_below="@+id/upIcon"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:textColor="#787878"
+                    android:text="我上传的"/>
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="#ccc"></View>
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:id="@+id/remarkLay"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:id="@+id/markIcon"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/mark"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:layout_below="@+id/markIcon"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:textColor="#787878"
+                    android:text="评论"/>
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#ccc"></View>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="horizontal">
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:id="@+id/ysLay"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:id="@+id/yunIcon"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/yuns"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:layout_below="@+id/yunIcon"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:textColor="#787878"
+                    android:text="运势"/>
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_alignParentBottom="true"
+                android:background="#ccc"></View>
+
+
+        </RelativeLayout>
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="#ccc"></View>
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:visibility="visible"
+            android:id="@+id/tcLay"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:id="@+id/tcIcon"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/tuichu"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:layout_below="@+id/tcIcon"
+                    android:textColor="#787878"
+                    android:text="退出"/>
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_alignParentBottom="true"
+                android:background="#ccc"></View>
+            <View
+                android:layout_width="1dp"
+                android:layout_alignParentRight="true"
+                android:layout_height="match_parent"
+                android:background="#ccc"></View>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
 
 </LinearLayout>

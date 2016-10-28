@@ -89,13 +89,14 @@
         android:name=".application.MyApplication"
         android:supportsRtl="true"
         android:theme="@android:style/Theme.Light.NoTitleBar">
-        <activity android:name=".activity.ChoseCityActivity">
+        <activity android:name=".WelcomActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.ChoseCityActivity"></activity>
         <activity android:name=".activity.MainActivity"
             android:theme="@style/Theme.AppCompat"></activity>
         <activity android:name=".activity.JokeActivity"></activity>
@@ -106,6 +107,7 @@
         <activity android:name=".activity.ReginResult"></activity>
         <activity android:name=".activity.ReginInfo"></activity>
         <activity android:name=".activity.ActionCodeActivity"></activity>
+        <activity android:name=".activity.XingZuoActivity"></activity>
 
 
 
