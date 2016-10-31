@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:padding="10dp"
+              android:orientation="vertical">
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:id="@+id/ivTou"
+        android:src="@drawable/touxiang"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:text="fengerous"
+        android:layout_toRightOf="@+id/ivTou"
+        android:layout_marginLeft="10dp"
+        android:id="@+id/tvName"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvTime"
+        android:layout_alignParentRight="true"
+        android:text="2010-12-22"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_below="@+id/ivTou"
+        android:layout_marginTop="10dp"
+        android:id="@+id/tvBody"
+        android:layout_height="wrap_content"/>
+
+
+</RelativeLayout>

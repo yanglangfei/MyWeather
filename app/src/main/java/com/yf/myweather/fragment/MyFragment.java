@@ -22,6 +22,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.target.BitmapImageViewTarget;
 import com.yf.myweather.R;
 import com.yf.myweather.activity.Login;
+import com.yf.myweather.activity.WaitActivity;
 import com.yf.myweather.activity.XingZuoActivity;
 import com.yf.myweather.model.User;
 import com.yf.myweather.utils.AppManager;
@@ -143,7 +144,7 @@ public class MyFragment extends Fragment implements View.OnClickListener {
             case R.id.collLay:
                 if (uId.trim().length() > 0) {
                     //TODO 我的收藏
-
+                    startActivity(new Intent(getActivity(), WaitActivity.class));
                 } else {
                     //登录
                     startActivity(new Intent(getActivity(), Login.class));
@@ -152,7 +153,7 @@ public class MyFragment extends Fragment implements View.OnClickListener {
             case R.id.upLay:
                 if (uId.trim().length() > 0) {
                     //TODO 我的上传
-
+                    startActivity(new Intent(getActivity(), WaitActivity.class));
                 } else {
                     //登录
                     startActivity(new Intent(getActivity(), Login.class));
@@ -161,7 +162,7 @@ public class MyFragment extends Fragment implements View.OnClickListener {
             case R.id.remarkLay:
                 if (uId.trim().length() > 0) {
                     //TODO 我的评论
-
+                    startActivity(new Intent(getActivity(), WaitActivity.class));
                 } else {
                     //登录
                     startActivity(new Intent(getActivity(), Login.class));

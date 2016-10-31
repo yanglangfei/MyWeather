@@ -1,6 +1,7 @@
 package com.yf.myweather.fragment;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -17,9 +18,11 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.yf.myweather.R;
+import com.yf.myweather.activity.Login;
 import com.yf.myweather.adapter.ImageAdapter;
 import com.yf.myweather.adapter.VPAdapter;
 import com.yf.myweather.model.ImageFile;
+import com.yf.myweather.model.User;
 import com.yf.myweather.utils.AppUtils;
 import com.yf.myweather.utils.StoreUtils;
 import com.yf.myweather.view.MyGridView;
@@ -52,6 +55,7 @@ public class ImageFragment extends Fragment {
     private List<ImageFile> mFiles=new ArrayList<>();
     private List<ImageView> mImageViews=new ArrayList<>();
     private FloatingActionButton test_fab;
+    private  String uId;
 
     @Nullable
     @Override
@@ -131,6 +135,13 @@ public class ImageFragment extends Fragment {
         test_fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                uId=StoreUtils.getUid(getActivity());
+                if(uId.trim().length()<=0){
+                    Intent intent=new Intent(getActivity(), Login.class);
+                    startActivity(intent);
+                    return;
+                }
+
                 final Dialog dialog=new Dialog(getActivity());
                 dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
                 dialog.setCanceledOnTouchOutside(true);
@@ -195,25 +206,7 @@ public class ImageFragment extends Fragment {
             @Override
             public void done(BmobException e) {
                 if(e==null){
-                    ImageFile image=new ImageFile();
-                    image.setUrl(file);
-                    image.setCity(StoreUtils.getPlace(getActivity()));
-                    image.setDev(1);
-                    image.setLat(StoreUtils.getLat(getActivity()));
-                    image.setLon(StoreUtils.getLon(getActivity()));
-                    image.setAddress(StoreUtils.getAddress(getActivity()));
-                    image.save(new SaveListener<String>() {
-                        @Override
-                        public void done(String s, BmobException e) {
-                            if(e==null){
-                                initLocalData();
-                                Toast.makeText(getActivity(), "上传成功", Toast.LENGTH_SHORT).show();
-                            }else {
-                                Toast.makeText(getActivity(), "上传失败"+e.getErrorCode(), Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    });
-
+                  querryUser(uId,file);
                 }else {
                     Toast.makeText(getActivity(), "上传失败"+e.getErrorCode(), Toast.LENGTH_SHORT).show();
                 }
@@ -223,6 +216,44 @@ public class ImageFragment extends Fragment {
             @Override
             public void onProgress(Integer value) {
                 super.onProgress(value);
+            }
+        });
+    }
+
+    private void querryUser(final String id, final BmobFile f) {
+        BmobQuery<User> user=new BmobQuery<>();
+        user.addWhereEqualTo("objectId",id);
+        user.findObjects(new FindListener<User>() {
+            @Override
+            public void done(List<User> list, BmobException e) {
+                if(e==null&&list.size()>0){
+                   createFile(f,list.get(0));
+                }else {
+                    Toast.makeText(getActivity(), "上传失败"+e.getErrorCode(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+
+    private void createFile(BmobFile file,User u) {
+        ImageFile image=new ImageFile();
+        image.setUrl(file);
+        image.setCity(StoreUtils.getPlace(getActivity()));
+        image.setDev(1);
+        image.setuName(u.getUserName());
+        image.setuId(u.getObjectId());
+        image.setLat(StoreUtils.getLat(getActivity()));
+        image.setLon(StoreUtils.getLon(getActivity()));
+        image.setAddress(StoreUtils.getAddress(getActivity()));
+        image.save(new SaveListener<String>() {
+            @Override
+            public void done(String s, BmobException e) {
+                if(e==null){
+                    initLocalData();
+                    Toast.makeText(getActivity(), "上传成功", Toast.LENGTH_SHORT).show();
+                }else {
+                    Toast.makeText(getActivity(), "上传失败"+e.getErrorCode(), Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

@@ -16,6 +16,24 @@ public class ImageFile extends BmobObject implements Serializable{
     private  String lat;
     private  int dev;
     private  String address;
+    private String uName;
+    private  String uId;
+
+    public String getuName() {
+        return uName;
+    }
+
+    public void setuName(String uName) {
+        this.uName = uName;
+    }
+
+    public String getuId() {
+        return uId;
+    }
+
+    public void setuId(String uId) {
+        this.uId = uId;
+    }
 
     public void setLon(String lon) {
         this.lon = lon;
