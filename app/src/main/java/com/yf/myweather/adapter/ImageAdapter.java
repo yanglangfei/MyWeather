@@ -82,6 +82,7 @@ public class ImageAdapter extends BaseAdapter implements View.OnClickListener {
         intent.putExtra("uName",f.getuName());
         intent.putExtra("time",f.getCreatedAt());
         intent.putExtra("id",f.getObjectId());
+        intent.putExtra("type",1);
         context.startActivity(intent);
 
     }

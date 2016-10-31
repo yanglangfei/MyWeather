@@ -54,6 +54,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/iv_zoom"
+        android:id="@+id/markLay"
         android:padding="10dp">
 
         <ImageView
@@ -91,6 +92,7 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
+        android:id="@+id/etLay"
         android:layout_height="50dp"
         >
         <EditText

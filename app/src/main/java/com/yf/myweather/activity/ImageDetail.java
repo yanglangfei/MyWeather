@@ -1,6 +1,7 @@
 package com.yf.myweather.activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -10,6 +11,8 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -44,8 +47,10 @@ public class ImageDetail extends BaseActivity implements View.OnClickListener {
     private MarkAdapter mAdapter;
     private Button btSub;
     private EditText markEt;
+    private RelativeLayout markLay;
     private  String id;
     private  String uId;
+    private  LinearLayout etLay;
     private  TextView MArk;
     private List<Remark> mRemarks=new ArrayList<>();
 
@@ -82,6 +87,8 @@ public class ImageDetail extends BaseActivity implements View.OnClickListener {
         markEt= (EditText) findViewById(R.id.markEt);
         btSub= (Button) findViewById(R.id.btSub);
         MArk= (TextView) findViewById(R.id.MArk);
+        markLay= (RelativeLayout) findViewById(R.id.markLay);
+        etLay= (LinearLayout) findViewById(R.id.etLay);
         uId= StoreUtils.getUid(this);
         btSub.setOnClickListener(this);
         iv_finish.setOnClickListener(this);
@@ -91,8 +98,16 @@ public class ImageDetail extends BaseActivity implements View.OnClickListener {
         String imagePath = getIntent().getStringExtra("image_path");
         String time=getIntent().getStringExtra("time");
         String uName=getIntent().getStringExtra("uName");
-        tvUpLoder.setText(uName.trim().length()>0 ?"上传者:"+uName : "上传者:未知");
-        tvTime.setText(time.length()>0 ? "上传时间:"+time :"上传时间:"+"未知");
+        tvUpLoder.setText(uName!=null&&uName.trim().length()>0 ?"上传者:"+uName : "上传者:未知");
+        tvTime.setText(time!=null&&time.length()>0 ? "上传时间:"+time :"上传时间:"+"未知");
+        int type=getIntent().getIntExtra("type",0);
+        if(type==1){
+
+        }else {
+            markLay.setVisibility(View.GONE);
+            marLv.setVisibility(View.GONE);
+            etLay.setVisibility(View.GONE);
+        }
         if(imagePath.endsWith("gif")){
             Glide.with(this).load(imagePath).asGif().diskCacheStrategy(DiskCacheStrategy.SOURCE).into(iv_zoom);
         }else {
