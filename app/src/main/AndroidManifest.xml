@@ -109,6 +109,9 @@
         <activity android:name=".activity.ActionCodeActivity"></activity>
         <activity android:name=".activity.XingZuoActivity"></activity>
         <activity android:name=".activity.WaitActivity"></activity>
+        <activity android:name=".activity.Setting"></activity>
+        <activity android:name=".activity.EditInfo"></activity>
+        <activity android:name=".activity.RemarkActivity"></activity>
 
 
 

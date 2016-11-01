@@ -1,6 +1,7 @@
 package com.yf.myweather.activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -184,4 +185,5 @@ public class MainActivity extends FragmentActivity implements ViewPager.OnPageCh
     public void onPageScrollStateChanged(int state) {
 
     }
+
 }

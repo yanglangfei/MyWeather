@@ -3,6 +3,7 @@ package com.yf.myweather.fragment;
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -21,7 +22,10 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.target.BitmapImageViewTarget;
 import com.yf.myweather.R;
+import com.yf.myweather.activity.EditInfo;
 import com.yf.myweather.activity.Login;
+import com.yf.myweather.activity.RemarkActivity;
+import com.yf.myweather.activity.Setting;
 import com.yf.myweather.activity.WaitActivity;
 import com.yf.myweather.activity.XingZuoActivity;
 import com.yf.myweather.model.User;
@@ -55,6 +59,10 @@ public class MyFragment extends Fragment implements View.OnClickListener {
     private  RelativeLayout remarkLay;
     private  RelativeLayout ysLay;
     private  RelativeLayout tcLay;
+    private  RelativeLayout infolLay;
+    private  RelativeLayout rkLay;
+    private  RelativeLayout settingLay;
+    private  RelativeLayout upLoadLay;
 
     @Nullable
     @Override
@@ -69,8 +77,11 @@ public class MyFragment extends Fragment implements View.OnClickListener {
         super.onResume();
         uId = StoreUtils.getUid(getActivity());
         if (uId != null && uId.trim().length() > 0) {
+            tcLay.setVisibility(View.VISIBLE);
+            tcLay.setBackgroundColor(Color.WHITE);
             initUserData(uId);
         } else {
+            tcLay.setBackgroundColor(Color.parseColor("#ECEDF1"));
             tcLay.setVisibility(View.INVISIBLE);
             MrakLogin.setText("请 登 录");
             userLogo.setImageResource(R.drawable.touxiang);
@@ -107,8 +118,6 @@ public class MyFragment extends Fragment implements View.OnClickListener {
 
                     }
                 });
-        ;
-
     }
 
     private void initView() {
@@ -120,6 +129,14 @@ public class MyFragment extends Fragment implements View.OnClickListener {
         remarkLay= (RelativeLayout) mView.findViewById(R.id.remarkLay);
         ysLay= (RelativeLayout) mView.findViewById(R.id.ysLay);
         tcLay= (RelativeLayout) mView.findViewById(R.id.tcLay);
+        infolLay= (RelativeLayout) mView.findViewById(R.id.infolLay);
+        rkLay= (RelativeLayout) mView.findViewById(R.id.rkLay);
+        settingLay= (RelativeLayout) mView.findViewById(R.id.settingLay);
+        upLoadLay= (RelativeLayout) mView.findViewById(R.id.upLoadLay);
+        upLoadLay.setOnClickListener(this);
+        settingLay.setOnClickListener(this);
+        rkLay.setOnClickListener(this);
+        infolLay.setOnClickListener(this);
         tcLay.setOnClickListener(this);
         ysLay.setOnClickListener(this);
         remarkLay.setOnClickListener(this);
@@ -177,13 +194,30 @@ public class MyFragment extends Fragment implements View.OnClickListener {
                     //登录
                     startActivity(new Intent(getActivity(), Login.class));
                 }
-
                 break;
             case R.id.tcLay:
                 //TODO 退出
                 StoreUtils.cleanUid(getActivity());
                 AppManager.finishActivity();
                 break;
+            case R.id.infolLay:
+                //TODO 个人资料
+                startActivity(new Intent(getActivity(), EditInfo.class));
+                break;
+            case R.id.rkLay:
+                //TODO 意见反馈
+                startActivity(new Intent(getActivity(), RemarkActivity.class));
+                break;
+            case R.id.settingLay:
+                //TODO 设置
+                startActivity(new Intent(getActivity(), Setting.class));
+                break;
+            case R.id.upLoadLay:
+                //TODO 版本更新
+                break;
+
+
+
 
 
         }

@@ -2,8 +2,12 @@ package com.yf.myweather.activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -32,6 +36,9 @@ public class Login extends BaseActivity implements View.OnClickListener {
     private EditText account;
     private  EditText password;
     private Button login;
+    private  ImageView qqIcon;
+    private  ImageView weiChatIcon;
+    private  ImageView sinaIcon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +48,10 @@ public class Login extends BaseActivity implements View.OnClickListener {
     }
 
     private void initView() {
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP){
+            getWindow().setStatusBarColor(Color.parseColor("#0790c2"));
+        }
         toRegin= (TextView) findViewById(R.id.toRegin);
         toRegin.setOnClickListener(this);
         iv_finish= (ImageView) findViewById(R.id.iv_finish);
@@ -48,6 +59,12 @@ public class Login extends BaseActivity implements View.OnClickListener {
         account= (EditText) findViewById(R.id.account);
         password= (EditText) findViewById(R.id.password);
         login= (Button) findViewById(R.id.login);
+        qqIcon= (ImageView) findViewById(R.id.qqIcon);
+        weiChatIcon= (ImageView) findViewById(R.id.weiChatIcon);
+        sinaIcon= (ImageView) findViewById(R.id.sinaIcon);
+        sinaIcon.setOnClickListener(this);
+        weiChatIcon.setOnClickListener(this);
+        qqIcon.setOnClickListener(this);
         login.setOnClickListener(this);
     }
 
@@ -110,6 +127,18 @@ public class Login extends BaseActivity implements View.OnClickListener {
 
 
                 break;
+            case R.id.qqIcon:
+                //TODO QQ 登录
+                break;
+            case R.id.weiChatIcon:
+                //TODO 微信登录
+                break;
+            case R.id.sinaIcon:
+                //TODO 新浪登录
+                break;
+            default:
+                break;
+
         }
     }
 }

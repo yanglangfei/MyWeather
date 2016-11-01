@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:background="#ECEDF1"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <include layout="@layout/ui_titlebar" android:id="@+id/tb"></include>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_marginTop="40dp"
+        android:layout_below="@+id/tb"
+        android:layout_marginRight="10dp"
+        android:maxLines="6"
+        android:minLines="6"
+        android:gravity="top"
+        android:id="@+id/etMark"
+        android:textSize="15sp"
+        android:hint="请输入您的意见"
+        android:padding="10dp"
+        android:background="@drawable/rk_select"
+        android:layout_marginLeft="10dp"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_alignLeft="@+id/etMark"
+        android:layout_below="@+id/etMark"
+        android:text="还可以输13个字符"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etMark"
+        android:layout_alignRight="@+id/etMark"
+        android:padding="10dp"
+        android:textSize="15sp"
+        android:textColor="@android:color/white"
+        android:background="@drawable/btn_select"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:text="提交"/>
+
+</RelativeLayout>

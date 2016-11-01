@@ -1,112 +1,159 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:background="#ECEDF1"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
-    <include layout="@layout/ui_titlebar" android:id="@+id/tb"></include>
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#ECEDF1">
+
+    <include
+        android:id="@+id/tb"
+        layout="@layout/ui_titlebar"></include>
 
     <ImageView
+        android:id="@+id/logo"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_marginTop="50dp"
         android:layout_below="@+id/tb"
-        android:id="@+id/logo"
-        android:visibility="gone"
-        android:src="@drawable/dog"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/dog"
+        android:visibility="gone"
         />
 
     <EditText
-        android:layout_width="match_parent"
-        android:layout_below="@+id/logo"
         android:id="@+id/account"
-        android:textColorHint="#CACBCC"
-        android:hint="手机号/账号"
-        android:textSize="15sp"
-        android:layout_marginTop="25dp"
-        android:paddingLeft="10dp"
-        android:background="@drawable/et_drawable"
-        android:layout_height="40dp"/>
-    <EditText
         android:layout_width="match_parent"
-        android:layout_below="@+id/account"
+        android:layout_height="40dp"
+        android:layout_below="@+id/logo"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/et_drawable"
+        android:hint="手机号/账号"
+        android:paddingLeft="10dp"
+        android:textColorHint="#CACBCC"
+        android:textSize="15sp"/>
+
+    <EditText
         android:id="@+id/password"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@+id/account"
+        android:background="@drawable/et_drawable"
         android:hint="密码"
         android:inputType="textPassword"
         android:paddingLeft="10dp"
-        android:background="@drawable/et_drawable"
-        android:textSize="15sp"
         android:textColorHint="#CACBCC"
-        android:layout_height="40dp"/>
+        android:textSize="15sp"/>
 
     <Button
-        android:layout_width="match_parent"
-        android:layout_below="@+id/password"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="10dp"
-        android:background="@drawable/btn_select"
         android:id="@+id/login"
-        android:text="登  录"
-        android:textSize="18sp"
-        android:textColor="#E2F6FD"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_below="@+id/password"
+        android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_height="45dp"/>
+        android:layout_marginTop="20dp"
+        android:background="@drawable/btn_select"
+        android:text="登  录"
+        android:textColor="#E2F6FD"
+        android:textSize="18sp"/>
 
     <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_below="@+id/login"
-        android:layout_alignLeft="@+id/login"
-        android:checked="true"
-        android:button="@drawable/check_select"
         android:id="@+id/read"
-        android:visibility="gone"
-        android:textSize="15sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/login"
+        android:layout_below="@+id/login"
         android:layout_marginTop="10dp"
-        android:layout_height="wrap_content"/>
+        android:button="@drawable/check_select"
+        android:checked="true"
+        android:textSize="15sp"
+        android:visibility="gone"/>
 
 
     <TextView
-        android:layout_width="wrap_content"
-        android:text="我已阅读并同意"
-        android:textSize="15sp"
-        android:visibility="gone"
-        android:layout_marginLeft="8dp"
-        android:textColor="#848484"
         android:id="@+id/readStr"
-        android:layout_toRightOf="@+id/read"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/read"
-        android:layout_height="wrap_content"/>
+        android:layout_marginLeft="8dp"
+        android:layout_toRightOf="@+id/read"
+        android:text="我已阅读并同意"
+        android:textColor="#848484"
+        android:textSize="15sp"
+        android:visibility="gone"/>
+
     <TextView
         android:layout_width="wrap_content"
-        android:text="服务条款"
-        android:textSize="15sp"
-        android:visibility="gone"
-        android:textColor="#1BB7F0"
-        android:layout_toRightOf="@+id/readStr"
+        android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/readStr"
-        android:layout_height="wrap_content"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="无法登录?"
-        android:id="@+id/noLogin"
+        android:layout_toRightOf="@+id/readStr"
+        android:text="服务条款"
+        android:textColor="#1BB7F0"
         android:textSize="15sp"
-        android:visibility="invisible"
+        android:visibility="gone"/>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginLeft="15dp"
-        android:layout_marginBottom="20dp"
-        android:textColor="#1BB7F0"/>
+        android:layout_marginBottom="80dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        >
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            >
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:id="@+id/qqIcon"
+                android:layout_centerInParent="true"
+                android:background="@drawable/qq_select"/>
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="50dp"
+                android:layout_centerInParent="true"
+                android:id="@+id/weiChatIcon"
+               android:background="@drawable/wechat_select" />
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="50dp"
+                android:id="@+id/sinaIcon"
+                android:layout_centerInParent="true"
+                android:background="@drawable/sina_select"/>
+        </LinearLayout>
+
+    </RelativeLayout>
+
 
     <TextView
+        android:id="@+id/noLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="新用户注册"
-        android:id="@+id/toRegin"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="15dp"
+        android:text="无法登录?"
+        android:textColor="#1BB7F0"
         android:textSize="15sp"
-        android:layout_marginRight="15dp"
-        android:layout_alignParentRight="true"
+        android:visibility="invisible"/>
+
+    <TextView
+        android:id="@+id/toRegin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/noLogin"
-        android:textColor="#1BB7F0"/>
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="15dp"
+        android:text="新用户注册"
+        android:textColor="#1BB7F0"
+        android:textSize="15sp"/>
 
 </RelativeLayout>
